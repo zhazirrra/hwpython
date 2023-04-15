@@ -1,0 +1,11 @@
+class Solution(object):
+    def canVisitAllRooms(self, rooms):
+        n = len(rooms)
+        visited = set([0])
+        keys = set(rooms[0])
+        while keys:
+            key = keys.pop()
+            if key not in visited:
+                visited.add(key)
+                keys |= set(rooms[key])
+        return len(visited) == n
