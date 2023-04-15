@@ -1,4 +1,5 @@
-def makeConnected(n: int, connections: List[List[int]]) -> int:
+class Solution(object):
+    def makeConnected(n: int, connections: List[List[int]]) -> int:
     if len(connections) < n - 1:
         return -1
         
