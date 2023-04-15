@@ -1,0 +1,24 @@
+def makeConnected(n: int, connections: List[List[int]]) -> int:
+    if len(connections) < n - 1:
+        return -1
+        
+    graph = [[] for _ in range(n)]
+    for a, b in connections:
+        graph[a].append(b)
+        graph[b].append(a)
+        
+    visited = [False] * n
+    count = 0
+    
+    def dfs(v):
+        visited[v] = True
+        for neighbor in graph[v]:
+            if not visited[neighbor]:
+                dfs(neighbor)
+                
+    for i in range(n):
+        if not visited[i]:
+            dfs(i)
+            count += 1
+            
+    return count - 1
